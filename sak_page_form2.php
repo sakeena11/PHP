@@ -18,71 +18,22 @@ switch ($task)  {
         // addslashes() escapes characters like ' and " in the data that can break SQL statements
         // remove addslashes() and submit data containing a ' and see what happens.
 
-        // orig values
-        // $crud_name      = addslashes(trim($get_post['crud_name']));
-        // $crud_age       = addslashes(trim($get_post['crud_age']));
-        // $crud_is_cool   = addslashes(trim($get_post['crud_is_cool']));  // empty string if checkbox isn't checked
-
     $fullname = addslashes(trim($get_post['fullname']));
     $email = addslashes(trim($get_post['email']));
     $num_of_squirrels_seen = addslashes(trim($get_post['num_of_squirrels_seen']));
     $squirrels_burying_nuts = addslashes(trim($get_post['squirrels_burying_nuts']));
     $types_of_squirrels = addslashes(trim($get_post['types_of_squirrels']));
     $nuts_forgotten = addslashes(trim($get_post['nuts_forgotten']));
-    // $low_classification_squirrels = addslashes(trim($get_post['low_classification_squirrels']));
+    
     $low_classification_squirrels1 = addslashes(trim($get_post['low_classification_squirrels1']));
     $low_classification_squirrels2 = addslashes(trim($get_post['low_classification_squirrels2']));
-
     $low_classification_squirrels = $low_classification_squirrels1 . " " . $low_classification_squirrels2;
 
     $flying_squirrel = addslashes(trim($get_post['flying_squirrel']));
+
     //$red_squirrels = addslashes(trim($get_post['red_squirrels[]']));
-
-
     $red_squirrels_db_var = implode(" ", $get_post['red_squirrels']);
-    echo $red_squirrels_db_var;
-
-    // $arr = array('Hello','World!','Beautiful','Day!');
-    // echo implode(" ",$arr);
-    
-    // $greeting = ' ';
-    // foreach ($_POST['red_squirrels'] as $red_squirrels) {
-    //     //$greeting = 'Hello ';
-    //     //$greeting .= $red_squirrels;
-    //     $greeting = " " . $red_squirrels;
-    //     echo $greeting;
-    // }  
-
-    // echo $greeting;
-
-    // die();
-    // exit();
-
-    // $a = implode(" ", $get_post['red_squirrels']);
-
-    //echo $red_squirrels;
-
-    
-    //   // Checking if any option is selected 
-    //   if(isset($_POST["red_squirrels"])) 
-    //   { 
-    //     // Retrieve each selected option 
-    //     foreach ($_POST['red_squirrels'] as $red_squirrels) 
-    //       //print "You selected $red_squirrels<br/>"; 
-    //       $greeting .= $red_squirrels;
-    //       //$greeting = $greeting . " " . $red_squirrels;
-    //       echo $greeting;
-    //   } 
-    //   else echo "Select an option first !!"; 
-          
-    
-
-    // echo $greeting;
-
-    // die();
-    // exit();
-
-
+    // echo $red_squirrels_db_var;
 
 
         // Server-Side Validation
