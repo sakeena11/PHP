@@ -14,18 +14,18 @@ $num_rows = $result->num_rows;
 		<title>Non-Fancy Listing of People Table</title>
 		<script type="text/javascript">
 
-      function confirm_delete(primary_key, fullname, email, num_of_squirrels_seen, squirrels_burying_nuts, types_of_squirrels, nuts_forgotten, low_classification_squirrels, flying_squirrel, red_squirrels) {
+      function confirm_delete(crud_id, fullname, email, num_of_squirrels_seen, squirrels_burying_nuts, types_of_squirrels, nuts_forgotten, low_classification_squirrels1, low_classification_squirrels2, flying_squirrel, red_squirrels) {
         var choice = confirm("Are you sure you want to delete " + fullname + "?");
 
         if ( choice == true ) {
-          window.location.href = "sak_page_form2.php?task=delete&primary_key="+primary_key;
+          window.location.href = "sak_page_form2.php?task=delete&crud_id="+crud_id;
         }
       }
     </script>
 
 	</head>
 	<body>
-	   <a href="sak_page_form.php">Go to the data form. </a>
+	   <a href="sak_page_form2.php">Go to the data form. </a>
 	   <br><br>
 
 	   <? if ( isset($get_post['deleted_message']) ) { ?>
@@ -47,7 +47,7 @@ $num_rows = $result->num_rows;
             <td>Squirrels burying nuts</td>
             <td>Types of Squirrels</td>
             <td>Number of nuts forgotten</td>
-            <td>Low classification of squirrels</td>
+            <td>Low classification of squirrels </td>
             <td>Flying squirrels</td>
             <td>Red squirrels</td>
 
@@ -66,9 +66,9 @@ $num_rows = $result->num_rows;
                <td><?= $row['red_squirrels']?></td>
 
                <td>
-                  <a href="sak_page_form.php?task=edit&primary_key=<?=$primary_key['primary_key']?>">Edit</a>
+                  <a href="sak_page_form.php?task=edit&crud_id=<?=$crud_id['crud_id']?>">Edit</a>
                   &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="#null" onclick="confirm_delete(<?=$primary_key['primary_key']?> , '<?=$fullname['fullname']?>', '<?=$email['email']?>', '<?=$num_of_squirrels_seen['num_of_squirrels_seen']?>', '<?=$squirrels_burying_nuts['squirrels_burying_nuts']?>', '<?=$types_of_squirrels['types_of_squirrels']?>', '<?=$nuts_forgotten['nuts_forgotten']?>', '<?=$low_classification_squirrels['low_classification_squirrels']?>', '<?=$flying_squirrel['flying_squirrel']?>', '<?=$red_squirrels['red_squirrels']?>')">Delete</a>
+                  <a href="#null" onclick="confirm_delete(<?=$crud_id['crud_id']?> , '<?=$fullname['fullname']?>', '<?=$email['email']?>', '<?=$num_of_squirrels_seen['num_of_squirrels_seen']?>', '<?=$squirrels_burying_nuts['squirrels_burying_nuts']?>', '<?=$types_of_squirrels['types_of_squirrels']?>', '<?=$nuts_forgotten['nuts_forgotten']?>', '<?=$low_classification_squirrels['low_classification_squirrels']?>', '<?=$flying_squirrel2['flying_squirrel2']?>', '<?=$red_squirrels['red_squirrels']?>')">Delete</a>
                </td>
             </tr>
          <? } // end while ?>

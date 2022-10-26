@@ -23,15 +23,66 @@ switch ($task)  {
         // $crud_age       = addslashes(trim($get_post['crud_age']));
         // $crud_is_cool   = addslashes(trim($get_post['crud_is_cool']));  // empty string if checkbox isn't checked
 
-$fullname = addslashes(trim($get_post['fullname']));
-$email = addslashes(trim($get_post['email']));
-$num_of_squirrels_seen = addslashes(trim($get_post['num_of_squirrels_seen']));
-$squirrels_burying_nuts = addslashes(trim($get_post['squirrels_burying_nuts']));
-$types_of_squirrels = addslashes(trim($get_post['types_of_squirrels']));
-$nuts_forgotten = addslashes(trim($get_post['nuts_forgotten']));
-$low_classification_squirrels = addslashes(trim($get_post['low_classification_squirrels']));
-$flying_squirrel = addslashes(trim($get_post['flying_squirrel']));
-$red_squirrels = addslashes(trim($get_post['red_squirrels']));
+    $fullname = addslashes(trim($get_post['fullname']));
+    $email = addslashes(trim($get_post['email']));
+    $num_of_squirrels_seen = addslashes(trim($get_post['num_of_squirrels_seen']));
+    $squirrels_burying_nuts = addslashes(trim($get_post['squirrels_burying_nuts']));
+    $types_of_squirrels = addslashes(trim($get_post['types_of_squirrels']));
+    $nuts_forgotten = addslashes(trim($get_post['nuts_forgotten']));
+    // $low_classification_squirrels = addslashes(trim($get_post['low_classification_squirrels']));
+    $low_classification_squirrels1 = addslashes(trim($get_post['low_classification_squirrels1']));
+    $low_classification_squirrels2 = addslashes(trim($get_post['low_classification_squirrels2']));
+
+    $low_classification_squirrels = $low_classification_squirrels1 . " " . $low_classification_squirrels2;
+
+    $flying_squirrel = addslashes(trim($get_post['flying_squirrel']));
+    //$red_squirrels = addslashes(trim($get_post['red_squirrels[]']));
+
+
+    $red_squirrels_db_var = implode(" ", $get_post['red_squirrels']);
+    echo $red_squirrels_db_var;
+
+    // $arr = array('Hello','World!','Beautiful','Day!');
+    // echo implode(" ",$arr);
+    
+    // $greeting = ' ';
+    // foreach ($_POST['red_squirrels'] as $red_squirrels) {
+    //     //$greeting = 'Hello ';
+    //     //$greeting .= $red_squirrels;
+    //     $greeting = " " . $red_squirrels;
+    //     echo $greeting;
+    // }  
+
+    // echo $greeting;
+
+    // die();
+    // exit();
+
+    // $a = implode(" ", $get_post['red_squirrels']);
+
+    //echo $red_squirrels;
+
+    
+    //   // Checking if any option is selected 
+    //   if(isset($_POST["red_squirrels"])) 
+    //   { 
+    //     // Retrieve each selected option 
+    //     foreach ($_POST['red_squirrels'] as $red_squirrels) 
+    //       //print "You selected $red_squirrels<br/>"; 
+    //       $greeting .= $red_squirrels;
+    //       //$greeting = $greeting . " " . $red_squirrels;
+    //       echo $greeting;
+    //   } 
+    //   else echo "Select an option first !!"; 
+          
+    
+
+    // echo $greeting;
+
+    // die();
+    // exit();
+
+
 
 
         // Server-Side Validation
@@ -72,7 +123,7 @@ $red_squirrels = addslashes(trim($get_post['red_squirrels']));
             //THIS WORKS:
             // $sql = "INSERT INTO " . YOUNUS . " (`crud_id`, `fullname`, `email`, `num_of_squirrels_seen`, `squirrels_burying_nuts`, `types_of_squirrels`, `nuts_forgotten`) VALUES (NULL,'$fullname','$email','$num_of_squirrels_seen', '$squirrels_burying_nuts', '$types_of_squirrels', '$nuts_forgotten')";
             
-            $sql = "INSERT INTO " . YOUNUS . " (`crud_id`, `fullname`, `email`, `num_of_squirrels_seen`, `squirrels_burying_nuts`, `types_of_squirrels`, `nuts_forgotten`, `low_classification_squirrels`, `flying_squirrel`, `red_squirrels`) VALUES (NULL,'$fullname','$email','$num_of_squirrels_seen', '$squirrels_burying_nuts', '$types_of_squirrels', '$nuts_forgotten', '$low_classification_squirrels', '$flying_squirrel', '$red_squirrels')";
+            $sql = "INSERT INTO " . YOUNUS . " (`crud_id`, `fullname`, `email`, `num_of_squirrels_seen`, `squirrels_burying_nuts`, `types_of_squirrels`, `nuts_forgotten`, `low_classification_squirrels`, `flying_squirrel`, `red_squirrels`) VALUES (NULL,'$fullname','$email','$num_of_squirrels_seen', '$squirrels_burying_nuts', '$types_of_squirrels', '$nuts_forgotten', '$low_classification_squirrels', '$flying_squirrel', '$red_squirrels_db_var')";
 
         }
 
@@ -126,6 +177,9 @@ $red_squirrels = addslashes(trim($get_post['red_squirrels']));
       */
       $crud_name = htmlspecialchars($row['crud_name']);
       $crud_age  = htmlspecialchars($row['crud_age']);
+
+      explode(" ", $get_post['a']);
+
 
       /*
         It would be tempting to allpy htmlspecialchars() to every column from the DB like below
@@ -221,16 +275,16 @@ $red_squirrels = addslashes(trim($get_post['red_squirrels']));
 
             <!-- MultiSelect Checkboxes -->
             <div>Which are you most surprised to find out are considered part of lower classifications of squirrels, choose 1 from each category</div>
-            <input type="radio" name="low_classification_squirrels" value="marmot" <? if($low_classification_squirrels['low_classification_squirrels'] == 'Marmot'){echo 'checked="marmot"';} ?> >
+            <input type="radio" name="low_classification_squirrels1" value="marmot" <? if($low_classification_squirrels1['low_classification_squirrels1'] == 'marmot'){echo 'checked="marmot"';} ?> >
             <label for="radio1">Marmot</label><br>
 
-            <input type="radio" name="low_classification_squirrels" value="pine_squirrel" <? if($low_classification_squirrels['low_classification_squirrels'] == 'pine_squirrel'){echo 'checked="pine_squirrel"';} ?>>
+            <input type="radio" name="low_classification_squirrels1" value="pine_squirrel" <? if($low_classification_squirrels1['low_classification_squirrels1'] == 'pine_squirrel'){echo 'checked="pine_squirrel"';} ?>>
             <label for="radio1">Pine squirrel</label><br><br>
 
-            <input type="radio" name="low_classification_squirrels" value="groundhog" <? if($low_classification_squirrels['low_classification_squirrels'] == 'groundhog'){echo 'checked="groundhog"';} ?>>
+            <input type="radio" name="low_classification_squirrels2" value="groundhog" <? if($low_classification_squirrels2['low_classification_squirrels2'] == 'groundhog'){echo 'checked="groundhog"';} ?>>
             <label for="radio2">Groundhog</label><br>
 
-            <input type="radio" name="low_classification_squirrels" value="prarie_dogs" <? if($low_classification_squirrels['low_classification_squirrels'] == 'prarie_dogs'){echo 'checked="prarie_dogs"';} ?>>
+            <input type="radio" name="low_classification_squirrels2" value="prarie_dogs" <? if($low_classification_squirrels2['low_classification_squirrels2'] == 'prarie_dogs'){echo 'checked="prarie_dogs"';} ?>>
             <label for="radio2">Prarie Dogs</label><br><br>
 
             <!--Single select dropdown -->
@@ -245,13 +299,13 @@ $red_squirrels = addslashes(trim($get_post['red_squirrels']));
 
             <!--Multi select dropdown -->
             <label for="multi_dropdown">Which two refer to red squirrels? (Hold down command/ctrl to select both answers):</label><br>
-            <select name="red_squirrels" multiple>
-            <option value="tamias" <? if($red_squirrels['multi_dropdown[]'] == 'tamias'){$a = $_POST['multi_dropdown']; echo implode('<br>', $a);} ?>>Red Squirrels</option>
-            <option value="eutamias_sibiricus" <? if($red_squirrels['multi_dropdown[]'] == 'eutamias_sibiricus'){$a = $_POST['multi_dropdown']; echo implode('<br>', $a);} ?>>Eutamias sibiricus</option>
-            <option value="pteromyini" <? if($red_squirrels['multi_dropdown[]'] == 'pteromyini'){$a = $_POST['multi_dropdown']; echo implode('<br>', $a);} ?>>Sciurus vulgaris</option>
-            <option value="meles_meles" <? if($red_squirrels['multi_dropdown[]'] == 'meles_meles'){$a = $_POST['multi_dropdown']; echo implode('<br>', $a);} ?>>Meles meles</option>
+            <select name="red_squirrels[]" multiple size="4">
+              <option value="tamias" <? if($flying_squirrel['flying_squirrel'] == 'tamias'){echo 'selected="tamias"';} ?>>Tamias</option>
+              <option value="eutamias_sibiricus" <? if($flying_squirrel['flying_squirrel'] == 'eutamias_sibiricus'){echo 'selected="eutamias_sibiricus"';} ?>>Eutamias Sibiricus</option>
+              <option value="pteromyini" <? if($flying_squirrel['flying_squirrel'] == 'pteromyini'){echo 'selected="pteromyini"';} ?>>Pteromyini</option>
+              <option value="meles_meles" <? if($flying_squirrel['flying_squirrel'] == 'meles_meles'){echo 'selected="meles_meles"';} ?>>Meles meles</option>
             </select>
-
+            <br><br><br>
             <input type="submit" value="Submit">
 
             
