@@ -32,7 +32,6 @@ switch ($task)  {
 
         $flying_squirrel = addslashes(trim($get_post['flying_squirrel']));
 
-        //$red_squirrels = addslashes(trim($get_post['red_squirrels[]']));
         $red_squirrels_db_var = implode(" ", $get_post['red_squirrels']);
         
         echo " ---- " . $red_squirrels_db_var;
@@ -53,13 +52,6 @@ switch ($task)  {
           exit;
         }
 
-        // if ( $crud_id > 0 ) {
-        //   // Build the UPDATE statement
-        //   $sql = "UPDATE " . CRUD_EXAMPLE_TABLE . " SET crud_name    ='$crud_name',
-        //                                           crud_age     = $crud_age,
-        //                                           crud_is_cool = '$crud_is_cool'
-        //                                       WHERE crud_id=$crud_id ";
-        // }
 
         if ( $crud_id > 0 ) {
           // Build the UPDATE statement
@@ -115,23 +107,10 @@ switch ($task)  {
 
       $crud_id = $get_post['crud_id'];
 
-      // echo $crud_id;
-
-      
-      // $sql = "SELECT * FROM " . CRUD_EXAMPLE_TABLE . " WHERE  crud_id=$crud_id ";
-
       $sql = "SELECT * FROM " . YOUNUS . " WHERE  crud_id=$crud_id ";
 
       $result = lib::db_query($sql);
       $row = $result->fetch_assoc();  // will only be one row
-
-      /*
-        Certain characters like " and < and > are reserved in HTML,
-        so will break the HTML if present in the data. The htmlspecialchars()function
-        converts them all into HTML character entities &quot; and &lt; and &gt;
-      */
-      // $crud_name = htmlspecialchars($row['crud_name']);
-      // $crud_age  = htmlspecialchars($row['crud_age']);
 
       $fullname = htmlspecialchars($row['fullname']);
       $email = htmlspecialchars($row['email']);
@@ -143,46 +122,6 @@ switch ($task)  {
       $red_squirrels = htmlspecialchars($row['red_squirrels']);
 
       $low_classification_squirrels_with_spaces = "-----" . $low_classification_squirrels;
-
-      // echo " ---- " . $red_squirrels;
-
-      // echo "<br>";
-      // echo $low_classification_squirrels_with_spaces;
-
-      // echo $fullname; echo "<br>";
-      // echo $email; echo "<br>";
-      // echo $num_of_squirrels_seen; echo "<br>";
-      // echo $squirrels_burying_nuts; echo "<br>";
-      // echo $types_of_squirrels; echo "<br>";
-      // echo $low_classification_squirrels; echo "<br>";
-      // echo $nuts_forgotten;
-
-    
-
-      // if($flying_squirrel == 'pteromyini'){echo ' selecteddddd ';}
-
-      //if($red_squirrels == 'pteromyini'){echo ' selecteddddd ';}
-
-      
-    
-      // echo "<br>";
-      // // echo strpos("pine_squirrel prarie_dogs", "pine_squirrel");
-      // echo strpos($low_classification_squirrels_with_spaces, "prarie_dogs");
-      // echo "<br>";
-
-      // if (strpos($low_classification_squirrels_with_spaces, "prarie_dogs") > 0){echo 'checked';}
-
-      // $nuts_forgotten = htmlspecialchars($row['nuts_forgotten']);
-
-      
-      
-
-
-      // if ($flying_squirrel['flying_squirrel'] == 'meles_meles') 
-      // {echo 'selected="meles_meles"';}
-
-
-      // explode(" ", $get_post['a']);
 
       /*
         It would be tempting to allpy htmlspecialchars() to every column from the DB like below
@@ -226,19 +165,6 @@ switch ($task)  {
 	   <br><br>
 
 	   <!-- This Form Submits to this same file!  -->
-	   <!-- <form action="sak_page_form2.php" method="POST" >
-	       <input type="hidden" name="task" value="save">
-	       <input type="hidden" name="crud_id" value="<?=$crud_id?>">
-
-	       Name: <input type="text" name="crud_name" value="<?= $crud_name ?>">
-         <br>
-         Age: <input type="text" name="crud_age" value="<?= $crud_age ?>">
-         <br>
-         <input type="checkbox" name="crud_is_cool" value="yes" <? if($row['crud_is_cool'] == 'yes'){echo 'checked="yes"';} ?> >
-         This person is cool.
-	       <br><br>
-	       <button type="submit"> Submit </button>
-	   </form> -->
 
        <form action="page_form.php" method="POST" >
             <input type="hidden" name="task" value="save">
@@ -255,7 +181,6 @@ switch ($task)  {
             <!-- Number -->
             <label for="number">How many squirrels did you see today? (1-100):</label><br><br>
             <input type="number" name="num_of_squirrels_seen" value="<?=$num_of_squirrels_seen?>" min="1" max="100"><br><br>
-
 
             <!-- Range -->
             <label for="range">How many squirrels did you see burying nuts today? (1-100):</label><br><br>
@@ -310,10 +235,8 @@ switch ($task)  {
               <option value="meles_meles" <? if (strpos($red_squirrels, "meles_meles") > 0){echo ' selected ';} ?>>Meles meles</option>
             </select>
             <br><br><br>
+
             <input type="submit" value="Submit">
-
-
         </form>
-
 	</body>
 </html>
