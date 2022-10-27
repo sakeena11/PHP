@@ -139,20 +139,28 @@ switch ($task)  {
       $types_of_squirrels = htmlspecialchars($row['types_of_squirrels']);
       $low_classification_squirrels = htmlspecialchars($row['low_classification_squirrels']);
       $flying_squirrel = htmlspecialchars($row['flying_squirrel']);
-
+      $red_squirrels = htmlspecialchars($row['red_squirrels']);
 
       $low_classification_squirrels_with_spaces = "-----" . $low_classification_squirrels;
+
       // echo "<br>";
       // echo $low_classification_squirrels_with_spaces;
 
-      echo $fullname; echo "<br>";
-      echo $email; echo "<br>";
-      echo $num_of_squirrels_seen; echo "<br>";
-      echo $squirrels_burying_nuts; echo "<br>";
-      echo $types_of_squirrels; echo "<br>";
-      echo $low_classification_squirrels; echo "<br>";
-      echo $nuts_forgotten;
-      echo $flying_squirrel;
+      // echo $fullname; echo "<br>";
+      // echo $email; echo "<br>";
+      // echo $num_of_squirrels_seen; echo "<br>";
+      // echo $squirrels_burying_nuts; echo "<br>";
+      // echo $types_of_squirrels; echo "<br>";
+      // echo $low_classification_squirrels; echo "<br>";
+      // echo $nuts_forgotten;
+
+      echo $red_squirrels;
+
+      // if($flying_squirrel == 'pteromyini'){echo ' selecteddddd ';}
+
+      // if($red_squirrels_db_var == 'pteromyini'){echo ' selecteddddd ';}
+
+      
     
       // echo "<br>";
       // // echo strpos("pine_squirrel prarie_dogs", "pine_squirrel");
@@ -268,15 +276,11 @@ switch ($task)  {
 
             <!-- MultiSelect Checkboxes -->
             <div>Which are you most surprised to find out are considered part of lower classifications of squirrels, choose 1 from each category</div>
-            <input type="radio" name="low_classification_squirrels1" value="marmot" <? if (strpos($low_classification_squirrels_with_spaces, "marmot") > 0){echo ' checked ';} ?> 
-            
-            >
+            <input type="radio" name="low_classification_squirrels1" value="marmot" <? if (strpos($low_classification_squirrels_with_spaces, "marmot") > 0){echo ' checked ';} ?>>
             <label for="radio1">Marmot</label><br>
 
             <input type="radio" name="low_classification_squirrels1" value="pine_squirrel" <? if (strpos($low_classification_squirrels_with_spaces, "pine_squirrel") > 0){echo ' checked ';} ?>>
             <label for="radio1">Pine squirrel</label><br><br>
-
-
 
             <input type="radio" name="low_classification_squirrels2" value="groundhog" <? if (strpos($low_classification_squirrels_with_spaces, "groundhog") > 0){echo ' checked ';} ?>>
             <label for="radio2">Groundhog</label><br>
@@ -287,25 +291,25 @@ switch ($task)  {
             <!--Single select dropdown -->
             <label for="single_dropdown">Which of the following is the scientific name for flying squirrels</label><br>
                 <select name="flying_squirrel">
-                <option value="tamias" <? if($flying_squirrel['flying_squirrel'] == 'tamias'){echo 'selected="tamias"';} ?>>Tamias</option>
-                <option value="pteromyini" <? if($flying_squirrel['flying_squirrel'] == 'pteromyini'){echo 'selected="pteromyini"';} ?>>Pteromyini</option>
-                <option value="eutamias_sibiricus" <? if($flying_squirrel['flying_squirrel'] == 'eutamias_sibiricus'){echo 'selected="eutamias_sibiricus"';} ?>>Eutamias sibiricus</option>
-                <option value="meles_meles" <? if($flying_squirrel['flying_squirrel'] == 'meles_meles'){echo 'selected="meles_meles"';} ?>>Meles meles</option>
+                  <option value="tamias" <? if($flying_squirrel== 'tamias'){echo ' selected ';} ?>>Tamias</option>
+                  <option value="pteromyini" <? if($flying_squirrel == 'pteromyini'){echo ' selected ';} ?>>Pteromyini</option>
+                  <option value="eutamias_sibiricus" <? if($flying_squirrel == 'eutamias_sibiricus'){echo ' selected ';} ?>>Eutamias sibiricus</option>
+                  <option value="meles_meles" <? if($flying_squirrel == 'meles_meles'){echo ' selected ';} ?>>Meles meles</option>
                 </select>
                 <br><br>
 
             <!--Multi select dropdown -->
             <label for="multi_dropdown">Which two refer to red squirrels? (Hold down command/ctrl to select both answers):</label><br>
             <select name="red_squirrels[]" multiple size="4">
-              <option value="tamias" <? if($red_squirrels['red_squirrels'] == 'tamias'){echo 'selected="tamias"';} ?>>Tamias</option>
-              <option value="eutamias_sibiricus" <? if($red_squirrels['red_squirrels'] == 'eutamias_sibiricus'){echo 'selected="eutamias_sibiricus"';} ?>>Eutamias Sibiricus</option>
-              <option value="pteromyini" <? if($red_squirrels['red_squirrels'] == 'pteromyini'){echo 'selected="pteromyini"';} ?>>Pteromyini</option>
-              <option value="meles_meles" <? if($red_squirrels['red_squirrels'] == 'meles_meles'){echo 'selected="meles_meles"';} ?>>Meles meles</option>
+              <option value="tamias" <? if($red_squirrels == 'tamias'){echo ' selected ';} ?>>Tamias</option>
+              <option value="eutamias_sibiricus" <? if($red_squirrels == 'eutamias_sibiricus'){echo ' selected ';} ?>>Eutamias Sibiricus</option>
+              <option value="pteromyini" <? if($red_squirrels == 'pteromyini'){echo ' selected ';} ?>>Pteromyini</option>
+              <option value="meles_meles" <? if($red_squirrels == 'meles_meles'){echo ' selected ';} ?>>Meles meles</option>
             </select>
             <br><br><br>
             <input type="submit" value="Submit">
 
-            
+
 
         </form>
 
