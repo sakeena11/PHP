@@ -33,9 +33,6 @@ switch ($task)  {
         $flying_squirrel = addslashes(trim($get_post['flying_squirrel']));
 
         $red_squirrels_db_var = implode(" ", $get_post['red_squirrels']);
-        
-        echo " ---- " . $red_squirrels_db_var;
-
 
         // Server-Side Validation
         if ( !$fullname || !$email ) {
@@ -52,11 +49,17 @@ switch ($task)  {
           exit;
         }
 
-
         if ( $crud_id > 0 ) {
           // Build the UPDATE statement
-          $sql = "UPDATE " . YOUNUS . " SET crud_name ='$fullname',
-                                            email = $email,
+          $sql = "UPDATE " . YOUNUS . " SET fullname ='$fullname',
+                                            email = '$email',
+                                            num_of_squirrels_seen = '$num_of_squirrels_seen',
+                                            squirrels_burying_nuts = '$squirrels_burying_nuts',
+                                            types_of_squirrels = '$types_of_squirrels',
+                                            nuts_forgotten = '$nuts_forgotten',
+                                            low_classification_squirrels = '$low_classification_squirrels',
+                                            flying_squirrel = '$flying_squirrel',
+                                            red_squirrels = '$red_squirrels_db_var'
                                         WHERE crud_id=$crud_id ";
         }
         else {
