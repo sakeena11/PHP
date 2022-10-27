@@ -34,7 +34,8 @@ switch ($task)  {
 
         //$red_squirrels = addslashes(trim($get_post['red_squirrels[]']));
         $red_squirrels_db_var = implode(" ", $get_post['red_squirrels']);
-        // echo $red_squirrels_db_var;
+        
+        echo " ---- " . $red_squirrels_db_var;
 
 
         // Server-Side Validation
@@ -94,7 +95,7 @@ switch ($task)  {
        }
 
        // Build the DELETE statement
-       $sql = "DELETE FROM " . CRUD_EXAMPLE_TABLE . " WHERE crud_id=$crud_id ";
+       $sql = "DELETE FROM " . YOUNUS . " WHERE crud_id=$crud_id ";
        lib::db_query($sql);
 
        header ("Location: page_listing.php?deleted_message=yes");
@@ -143,6 +144,8 @@ switch ($task)  {
 
       $low_classification_squirrels_with_spaces = "-----" . $low_classification_squirrels;
 
+      // echo " ---- " . $red_squirrels;
+
       // echo "<br>";
       // echo $low_classification_squirrels_with_spaces;
 
@@ -154,11 +157,11 @@ switch ($task)  {
       // echo $low_classification_squirrels; echo "<br>";
       // echo $nuts_forgotten;
 
-      echo $red_squirrels;
+    
 
       // if($flying_squirrel == 'pteromyini'){echo ' selecteddddd ';}
 
-      // if($red_squirrels_db_var == 'pteromyini'){echo ' selecteddddd ';}
+      //if($red_squirrels == 'pteromyini'){echo ' selecteddddd ';}
 
       
     
@@ -301,14 +304,13 @@ switch ($task)  {
             <!--Multi select dropdown -->
             <label for="multi_dropdown">Which two refer to red squirrels? (Hold down command/ctrl to select both answers):</label><br>
             <select name="red_squirrels[]" multiple size="4">
-              <option value="tamias" <? if($red_squirrels == 'tamias'){echo ' selected ';} ?>>Tamias</option>
-              <option value="eutamias_sibiricus" <? if($red_squirrels == 'eutamias_sibiricus'){echo ' selected ';} ?>>Eutamias Sibiricus</option>
-              <option value="pteromyini" <? if($red_squirrels == 'pteromyini'){echo ' selected ';} ?>>Pteromyini</option>
-              <option value="meles_meles" <? if($red_squirrels == 'meles_meles'){echo ' selected ';} ?>>Meles meles</option>
+              <option value="tamias" <? if (strpos($red_squirrels, "tamias") > 0){echo ' selected ';} ?> ?>Tamias</option>
+              <option value="eutamias_sibiricus" <? if (strpos($red_squirrels, "eutamias_sibiricus") > 0){echo ' selected ';} ?>>Eutamias Sibiricus</option>
+              <option value="pteromyini" <? if (strpos($red_squirrels, "pteromyini") > 0){echo ' selected ';} ?>>Pteromyini</option>
+              <option value="meles_meles" <? if (strpos($red_squirrels, "meles_meles") > 0){echo ' selected ';} ?>>Meles meles</option>
             </select>
             <br><br><br>
             <input type="submit" value="Submit">
-
 
 
         </form>

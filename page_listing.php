@@ -69,7 +69,7 @@ $num_rows = $result->num_rows;
                   <a href="page_form.php?task=edit&crud_id=<?=$row['crud_id']?>">Edit</a>
                   &nbsp;&nbsp;|&nbsp;&nbsp;
 
-                  <a href="#null" onclick="confirm_delete(<?=$crud_id['crud_id']?> , '<?=$fullname['fullname']?>', '<?=$email['email']?>', '<?=$num_of_squirrels_seen['num_of_squirrels_seen']?>', '<?=$squirrels_burying_nuts['squirrels_burying_nuts']?>', '<?=$types_of_squirrels['types_of_squirrels']?>', '<?=$nuts_forgotten['nuts_forgotten']?>', '<?=$low_classification_squirrels['low_classification_squirrels']?>', '<?=$flying_squirrel2['flying_squirrel2']?>', '<?=$red_squirrels['red_squirrels']?>')">Delete</a>
+                  <a href="#null" onclick="confirm_delete(<?=$row['crud_id']?> , '<?=$row['fullname']?>', '<?=$row['email']?>', '<?=$row['num_of_squirrels_seen']?>', '<?=$row['squirrels_burying_nuts']?>', '<?=$row['types_of_squirrels']?>', '<?=$row['nuts_forgotten']?>', '<?=$row['low_classification_squirrels']?>', '<?=$row['flying_squirrel']?>', '<?=$row['red_squirrels']?>')">Delete</a>
                </td>
             </tr>
          <? } // end while ?>
